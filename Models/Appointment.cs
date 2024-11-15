@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assessment_CarolinaBustamante.Models
 {
-    [Table("appointment")]
+    [Table("appointments")]
     public class Appointment
     {
         [Key]

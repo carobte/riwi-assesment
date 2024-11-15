@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Assessment_CarolinaBustamante.Models
 {
-    [Table("patient")]
+    [Table("patients")]
     public class Patient
     {
         [Key]
