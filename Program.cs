@@ -1,5 +1,7 @@
 using Assessment_CarolinaBustamante.Config;
 using Assessment_CarolinaBustamante.Data;
+using Assessment_CarolinaBustamante.Repositories;
+using Assessment_CarolinaBustamante.Services;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +23,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(conectionDB, ServerVersion.Parse("8.0.15-mysql")));
 
 // Add services to the container.
+
+// Utilities
 builder.Services.AddSingleton<Utilities>();
+
+// Repositories and services
+builder.Services.AddScoped<IUserRepository, UserService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
