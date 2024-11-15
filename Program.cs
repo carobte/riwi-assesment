@@ -29,6 +29,8 @@ builder.Services.AddSingleton<Utilities>();
 
 // Repositories and services
 builder.Services.AddScoped<IUserRepository, UserService>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentService>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

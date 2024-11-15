@@ -9,8 +9,8 @@ namespace Assessment_CarolinaBustamante.DTO
     {
         public string FullName { get; set; }
         public string Email { get; set; }
-        public TimeOnly StartTime { get; set; } // Doctor
-        public TimeOnly EndTime { get; set; } // Doctor
+        public TimeOnly StartTime { get; set; } 
+        public TimeOnly EndTime { get; set; } 
 
     }
 }
