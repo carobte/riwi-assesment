@@ -35,9 +35,13 @@ namespace Assessment_CarolinaBustamante.Controllers.V1.Auth
             {
                 return BadRequest(ModelState);
             }
-
-            await _repository.Register(newUser);
-            return Ok("User was registered successfully" ); 
+            var (isSuccess, message) = await _repository.Register(newUser);
+            
+            if (!isSuccess)
+            {
+                return BadRequest(message);
+            }
+            return Ok(message );
         }
     }
 }

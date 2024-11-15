@@ -9,7 +9,7 @@ namespace Assessment_CarolinaBustamante.Repositories
 {
     public interface IUserRepository
     {
-        Task Register(UserRegistrationDTO userRegistrationDTO);
+        Task<(bool IsSuccess, string Message)> Register(UserRegistrationDTO userRegistrationDTO);
         Task<IEnumerable<DoctorDTO>> GetDoctors();
         
     }

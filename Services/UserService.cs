@@ -21,7 +21,7 @@ namespace Assessment_CarolinaBustamante.Services
             _context = context;
             _utilities = utilities;
         }
-        public async Task Register(UserRegistrationDTO userDTO)
+        public async Task<(bool IsSuccess, string Message)> Register(UserRegistrationDTO userDTO)
         {
             var user = new User
             {
@@ -30,6 +30,12 @@ namespace Assessment_CarolinaBustamante.Services
                 Password = _utilities.EncryptSHA256(userDTO.Password),
                 Role = userDTO.Role.ToLower()
             };
+
+            var userExists =  await _context.Users.FirstOrDefaultAsync(u => u.Email == userDTO.Email.ToLower());
+
+            if (userExists != null) {
+                return (false, "The email is already registered. Please use a different email.");
+            }
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
@@ -58,6 +64,7 @@ namespace Assessment_CarolinaBustamante.Services
             }
 
             _context.SaveChanges();
+            return (true, "User registered successfully.");
         }
 
         public async Task<IEnumerable<DoctorDTO>> GetDoctors(){
