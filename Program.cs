@@ -4,6 +4,7 @@ using Assessment_CarolinaBustamante.Repositories;
 using Assessment_CarolinaBustamante.Services;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +36,25 @@ builder.Services.AddScoped<IAppointmentRepository, AppointmentService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Clinic API",
+        Version = "V1",
+        Description = "API for managing a clinic database. This version includes basic operations for users (doctors and patients), and appointments.",
+        Contact = new OpenApiContact
+        {
+            Name = "Carolina Bustamante Escobar",
+            Email = "caro.bustamante.escobar@gmail.com",
+            Url = new Uri("https://www.linkedin.com/in/caro-bustamante-escobar")
+        }
+    }
+         );
+
+    c.EnableAnnotations();
+});
 
 var app = builder.Build();
 
