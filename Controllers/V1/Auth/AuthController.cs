@@ -11,6 +11,7 @@ namespace Assessment_CarolinaBustamante.Controllers.V1.Auth
 {
     [ApiController]
     [Route("api/v1/users")]
+    [Tags("auth")]
     public class AuthController : ControllerBase
     {
         protected readonly IUserRepository _repository;

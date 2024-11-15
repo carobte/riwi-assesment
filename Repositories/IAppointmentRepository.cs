@@ -9,6 +9,7 @@ namespace Assessment_CarolinaBustamante.Repositories
     public interface IAppointmentRepository
     {
         Task<IEnumerable<AppointmentDTO>> GetAppointments();
+        Task<(bool IsSuccess, string Message)> CreateAppointment(AppointmentRequest appointment);
     
     }
 }
