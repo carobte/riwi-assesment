@@ -34,7 +34,7 @@ namespace Assessment_CarolinaBustamante.Data
             userSeeders.Seed(modelBuilder);
             DoctorSeeders.Seed(modelBuilder);
             PatientSeeders.Seed(modelBuilder);
-
+            AppointmentSeeders.Seed(modelBuilder);
         }
     }
 }
