@@ -7,6 +7,7 @@ using Assessment_CarolinaBustamante.Data;
 using Assessment_CarolinaBustamante.DTO;
 using Assessment_CarolinaBustamante.Models;
 using Assessment_CarolinaBustamante.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assessment_CarolinaBustamante.Services
 {
@@ -58,5 +59,19 @@ namespace Assessment_CarolinaBustamante.Services
 
             _context.SaveChanges();
         }
-    }
+
+        public async Task<IEnumerable<DoctorDTO>> GetDoctors(){
+            
+            var doctors = await _context.Doctors
+            .Include(doctor => doctor.User)
+            .Select(doctor => new DoctorDTO {
+                FullName = doctor.User.FullName,
+                Email = doctor.User.Email,
+                StartTime = doctor.StartTime,
+                EndTime = doctor.EndTime
+            }).ToListAsync();
+
+            return doctors;
+        }
+   }
 }
