@@ -1,0 +1,6 @@
+@Assessment_CarolinaBustamante_HostAddress = http://localhost:5170
+
+GET {{Assessment_CarolinaBustamante_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
